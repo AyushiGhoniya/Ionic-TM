@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list style="margin-top: 10px;">
+    <ion-list-header>
+      <ion-avatar item-start>
+        <img src="/assets/user.png">
+      </ion-avatar>
+      <p class="username">{{ userName | titlecase }}</p>
+    </ion-list-header>
+  </ion-list>
+
+  <hr style="margin-top: 5px;">
+  
+  <ion-title>Settings</ion-title>
+
+  <ion-list no-border>
+    <ion-list-header>
+      General
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name='notifications' item-start></ion-icon>
+      <ion-label class="label"> Enable notifications </ion-label>
+      <ion-toggle [(ngModel)]="enableNotifications" (click)="toggleNotifications()"></ion-toggle>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon name='help-buoy' item-start></ion-icon>
+      <ion-label class="label"> 24x7 Help </ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- <hr> -->
+  <ion-list>
+    <ion-list-header>
+      Other
+    </ion-list-header>
+    <ion-item (click)="logOut()" lines="none">
+      <ion-icon name='power' item-start></ion-icon>
+      <!-- <button ion-button (click)="logOut()" item-end>
+      Logout
+      </button> -->
+      <ion-label>Logout</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+

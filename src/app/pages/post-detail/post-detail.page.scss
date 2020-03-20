@@ -1,0 +1,113 @@
+ion-header {
+    ion-toolbar {
+      ion-title {
+        margin-left: -25px;
+      }
+    }
+}
+
+ion-content {
+  // .postImg {
+  //   // max-height: 180px;
+  //   img {
+  //     height: 180px;
+  //     width: 100%;
+  //   }
+  // }
+  // .postDetail {
+  //   float: right;
+  //   background-color: rgba(81,122,159, 0.2);
+  //   width: 100%;
+  //   margin-top: 5px;
+  //   text-align: center;
+  //   align-content: center;
+  //   span {
+  //     float: right;
+  //     text-align: center;
+  //     margin: 10px 10px 10px 10px;
+  //     ion-icon {
+  //       font-size: x-large;
+  //     }
+  //   }
+  // }
+  // .postContent {
+  //   top: 260px;
+  //   position: absolute;
+  //   margin: 10px 10px 20px 10px ;
+  //   padding: 10px;
+  //   box-shadow: 0px 0px 2px 1px rgb(189, 188, 188);
+  //   border-radius: 3px;
+  //   text-align: justify;
+  // }
+
+
+  .postImg {
+    margin: 20px;
+    opacity: 0;
+    animation: ImageFadeIn .4s .8s forwards;
+    img {
+      height: 250px;
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 .25rem .25rem rgba(203, 203, 203, 0.605),
+            0 0 1rem rgba(203, 203, 203, 0.605);
+    }
+    .icons {
+      float: right;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      ion-icon {
+        margin: 0px 0px 0px 10px;
+        color: rgb(104, 103, 103);
+        font-size: x-large;
+      }
+    }
+  }
+
+
+  .container {
+    opacity: 0;
+    animation: ContentFadeIn .4s 1s forwards;
+    .postName {
+      margin-top: 10px;
+      p {
+        color: #07a45b;
+        font-size: 15px;
+        margin-top: -3px;
+      }
+    }
+    .postDetail {
+      margin-top: -10px;
+      p {
+        color: black;
+        font-size: 15px;
+       
+      }
+      .like {
+        float: left;
+        ion-icon {
+          color: rgb(218, 17, 17);
+        }
+      }
+      .date {
+        float: right;
+        ion-icon {
+          color: #145c9b;
+        }
+      }
+    }
+    
+  }
+
+  @keyframes ContentFadeIn {
+    0% { transform: translateY(-1rem); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes ImageFadeIn {
+    0% { transform: translate(-.5rem, -.5rem) scale(1.05); opacity: 0; filter: blur(2px); }
+    50% { opacity: 1; filter: blur(2px); }
+    100% { transform: translateY(0) scale(1.0); opacity: 1; filter: blur(0); }
+  }
+}

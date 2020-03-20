@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/category"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ categoryName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<app-loader *ngIf="!datafatched"></app-loader>
+
+<ion-content *ngIf="datafatched">
+
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let post of postList">
+        <ion-card (click)="navigateToPostDetail(post.postName)">
+          <img src="{{ post.postImage }}">
+          <hr>
+            <ion-card-title>{{ post.postName }}</ion-card-title>
+        </ion-card>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container" *ngFor="let post of postList">
+    <div class="card" (click)="navigateToPostDetail(post.postName)">
+      <div class="card__image-container">
+        <img class="card__image" src="{{ post.postImage }}">
+      </div>
+
+      <div class="card__content">
+        <h5 class="card__title">{{ post.postName }}</h5>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>
