@@ -1,6 +1,6 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
-  <ion-tabs *ngIf="router.url !== '/splashscreen' && router.url !== '/'">
+  <ion-tabs *ngIf="router.url !== '/' && router.url !== '/splashscreen'">
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="home">
         <ion-label>Home</ion-label>

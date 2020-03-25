@@ -1,7 +1,8 @@
 {
   "name": "TM",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

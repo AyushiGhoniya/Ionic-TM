@@ -68,8 +68,10 @@ ion-content {
       }
       &__title {
         color: #517a9f;
-        float: left;
         font-weight: 500;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
 
     }
