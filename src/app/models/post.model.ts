@@ -2,7 +2,7 @@ export interface IPost {
     content: string,
     postImage: string,
     postName: string,
-    createdon: string,
+    timestamp: number,
     likes: number,
     category?: string
 }

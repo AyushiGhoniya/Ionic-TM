@@ -1,60 +1,15 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-menu-button slot="start" autoHide="false" (click)="toggleMenu = true"></ion-menu-button>
-    <ion-title>TM</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<app-side-menu *ngIf="toggleMenu"></app-side-menu>
-<app-loader *ngIf="!datafatched"></app-loader>
-
-<ion-content *ngIf="datafatched">
-  <div class="imageSlider">
-    <ion-slides pager [options]="imageSliderConfig">
-      <ion-slide *ngFor="let post of sliders[0]">
-        <div>
-          <img src="{{ post.postImage }}">
-        </div>
-      </ion-slide>
-    </ion-slides>
-  </div>
-  <div class="postSlider">
-    <ion-row *ngFor="let slider of sliders; let i = index">
-      <ion-col>
-        <div class="heading">
-          <div *ngIf="i == 0">
-            <img class="likedImg" src="/assets/heart.png">
-            <h3>Most Liked Posts</h3>
-          </div>
-          <div *ngIf="i == 1">
-            <img class="recentImg" src="/assets/stopwatch.png">
-            <h3>Recent Posts</h3>
-          </div>
-        </div>
-        <ion-slides [options]="postSliderConfig">
-          <ion-slide *ngFor="let sliderData of slider">
-            <ion-card (click)="navigateToPostDetail(sliderData.category ,sliderData.postName)">
-              <ion-card-header>
-                <ion-card-content>
-                  <img src="{{ sliderData.postImage }}">
-                  <h4>{{ sliderData.postName }}</h4>
-                  <h5>{{ sliderData.createdon }}</h5>
-                  <button class="category" (click)="navigateToPost(sliderData.category)">{{ sliderData.category }}</button>
-                </ion-card-content>
-              </ion-card-header>
-            </ion-card>
-          </ion-slide>
-        </ion-slides>
-        <div *ngIf="i == 0" (click)="navigateToAddPost()" class="addStory">
-          <img class="plusImg" src="/assets/plus.png">
-          <h4>Add Your Story</h4>
-          <br>
-          <p>
-            Share your daily life experiance as a mother. Share awesome photos. Provide us with useful tips which will
-            help out other womens.
-          </p>
-        </div>
-      </ion-col>
-    </ion-row>
+<ion-content>
+  <app-side-menu></app-side-menu>
+  <div class="home">
+    <div class="top-bar">
+      <div class="menu-icon">
+        <img class="menu-image" (click)="openMenu()" src="/assets/top-bar/menu.png">
+      </div>
+      <div class="user-icon">
+        <img class="user-image" src="/assets/top-bar/women.svg">
+      </div>
+    </div>
+    <app-category></app-category>
+    <app-story-list></app-story-list>
   </div>
 </ion-content>

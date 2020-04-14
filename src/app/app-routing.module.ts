@@ -2,14 +2,10 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'splashscreen', pathMatch: 'full' },
-  {
-    path: 'category',
-    loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule)
-  },
-  {
-    path: 'post/:category',
-    loadChildren: () => import('./pages/post/post.module').then( m => m.PostPageModule)
+  { 
+    path: '', 
+    redirectTo: 'splashscreen', 
+    pathMatch: 'full' 
   },
   {
     path: 'splashscreen',

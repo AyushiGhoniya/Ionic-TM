@@ -1,66 +1,50 @@
-<ion-header>
+<app-loader *ngIf="!datafatched"></app-loader>
+
+<ion-header #header *ngIf="showHeader">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button *ngIf="path === 'home'" defaultHref="/home"></ion-back-button>
-      <ion-back-button *ngIf="path !== 'home'" defaultHref="/post/{{ categoryName }}"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ postName }}</ion-title>
+    <ion-back-button defaultHref="/home" slot="start"></ion-back-button>
+    <ion-title>TM</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<app-loader *ngIf="!datafatched"></app-loader>
-
-<ion-content *ngIf="datafatched">
-
-  <!-- <div class="postImg">
-    <img src="{{ postDetail.postImage }}">
-  </div>
-
-  <div class="postDetail">
-    <span></span>
-    <span></span>
-    <span>
-      <ion-icon name="calendar" style="color: rgb(8, 155, 49);"></ion-icon><br>
-      <b>{{ postDetail.createdon }}</b>
-    </span>
-    <span>
-      <ion-icon name="heart" style="color: rgb(189, 3, 3);"></ion-icon><br>
-      <b>{{ postDetail.likes }}</b>
-    </span>
-    <span>
-      <ion-icon name="list" style="color: rgb(27, 112, 192);"></ion-icon><br>
-      <b>{{ categoryName }}</b>
-  </span>
-  </div>
-
-  <div class="postContent">
-    {{ postDetail.content }}
-  </div> -->
-
+<ion-content *ngIf="datafatched" [scrollEvents]="true" (ionScroll)="logScrolling($event)" (ionScrollStart)="scrollStart(header)">
+  
   <div class="postImg">
     <img src="{{ postDetail.postImage }}">
+    <ion-back-button defaultHref="/home" class="back"></ion-back-button>
     <div class="icons">
-      <ion-icon name="heart-outline"></ion-icon>
-      <ion-icon name="share-social-outline"></ion-icon>
+      <ion-icon name="heart-outline" class="like"></ion-icon>
+      <ion-icon name="share-social" class="share"></ion-icon>
     </div>
   </div>
-  <div class="container">
-  <div class="postName">
-    <h5>{{ postName }}</h5>
-    <p>Category : {{ categoryName }}</p>
-  </div>
-  <div class="postDetail">
-    <p class="like"><ion-icon name="heart"></ion-icon> {{ postDetail.likes }}</p>
-    <p class="date"><ion-icon name="calendar-outline"></ion-icon> {{ postDetail.createdon }}</p>
-  </div><br>
-  <hr>
-  <div class="content">
-    <p>
-      {{ postDetail.content }}
-    </p>
 
+  <div class="detail">
+    <h4>{{ postName }}</h4>
+    <div class="postDetail">
+      <div class="like">
+        <ion-icon name="heart"></ion-icon> 
+        <p>{{ postDetail.likes }}</p>
+      </div>
+      <div class="view">
+        <ion-icon name="eye"></ion-icon> 
+        <p>150</p>
+      </div>
+      <div class="date">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <p>{{ postDetail.timestamp * 1000 | date: 'dd/MM/yyyy' }}</p>
+      </div>
+    </div><br><br>
+    <div class="content">
+      <p>
+        {{ postDetail.content }}
+      </p>
+      <p>
+        {{ postDetail.content }}
+      </p>
+      <p>
+        {{ postDetail.content }}
+      </p>
+    </div>
   </div>
-</div>
 
-  
 </ion-content>

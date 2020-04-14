@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FirebaseModule } from './core/firebase/firebase.module';
+import { GooglePlus } from "@ionic-native/google-plus/ngx";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FirebaseModule } from './core/firebase/firebase.module';
   providers: [
     StatusBar,
     SplashScreen,
+    GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

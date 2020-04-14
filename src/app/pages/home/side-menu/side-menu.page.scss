@@ -1,0 +1,27 @@
+ion-menu {
+    ion-header {
+        ion-toolbar {
+            --background: translucent;
+            background-color: #f086aa;
+            color: white;
+        }
+    }
+    ion-content {
+        width: 100vw;
+        ion-list {
+            ion-item {
+                opacity: 1;
+                ion-icon {
+                    color: black;
+                }
+                ion-label {
+                    color: black;
+                    font-weight: 500;
+                }
+            }
+            ion-item[button] {
+                pointer-events: initial !important;
+            }
+        }
+    }
+}

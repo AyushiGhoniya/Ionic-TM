@@ -1,0 +1,14 @@
+<app-loader *ngIf="!datafatched"></app-loader>
+<div class="story" *ngIf="datafatched">
+  <h4>Story</h4>
+  <ion-grid>
+    <ion-row *ngFor="let post of posts">
+      <ion-col size="12" (click)="navigateToPostDetail(post.category, post.postName)">
+        <div class="layer"></div>
+        <img src="{{ post.postImage }}">
+        <h4>{{ post.postName }}</h4>
+        <p>{{ post.content | slice:0:60 }}...<b></b></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

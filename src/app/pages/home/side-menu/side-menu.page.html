@@ -1,0 +1,15 @@
+<ion-menu side="start" contentId="main">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Welcome</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="main">
+    <ion-list lines="none">
+      <ion-item button class="bg-class" *ngFor="let menuItem of menuItems" (click)="menuItem.click()">
+        <ion-icon name="{{ menuItem.icon }}" slot="start"></ion-icon>
+        <ion-label>{{ menuItem.label }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>

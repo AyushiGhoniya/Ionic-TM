@@ -1,0 +1,46 @@
+.story {
+    margin-top: 30px;
+    ion-grid {
+        height: 100%;
+        width: 100%;
+        padding: 0px;
+        ion-row {
+            margin-bottom: 20px;
+            width: 100%;
+            ion-col {
+                padding: 0px;
+                border-radius: 5px;
+                box-shadow: 1px 1px 30px 0px rgba(0, 0, 0, 0.1);
+                .layer {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    right: 0px;
+                    height: 30vh;
+                    background-color: black;
+                    opacity: 0.2;
+                    border-radius: 5px 5px 0px 0px;
+                }
+                img {
+                    height: 30vh;
+                    width: 100%;
+                    border-radius: 5px 5px 0px 0px;
+                }
+                h4 {
+                    // margin: 2vh 3vh 0% 3vh;
+                    margin: 15px 20px 0px 20px;
+                }
+                p {
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: rgb(58, 57, 49);
+                    margin: 2px 20px 15px 20px;
+                    // text-align: justify;
+                    b {
+                        color: #fa87aa;
+                    }
+                }
+            }
+        }
+    }
+}

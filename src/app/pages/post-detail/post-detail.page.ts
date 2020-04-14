@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/service/post.service';
 import { IPost } from 'src/app/models/post.model';
@@ -10,15 +10,19 @@ import { IPost } from 'src/app/models/post.model';
 })
 export class PostDetailPage implements OnInit {
 
+  @Input('header') header:any;
+
   postName: string;
   categoryName: string;
   postDetail: IPost;
   path: string;
-  datafatched: boolean = false
+  datafatched: boolean = false;
+  showHeader: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private postService: PostService
+    private postService: PostService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit() {
@@ -29,6 +33,29 @@ export class PostDetailPage implements OnInit {
       this.postDetail = item
       this.datafatched = true
     })
+  }
+
+  lastX:any;
+
+  logScrolling(event) {
+    if(event.detail.scrollTop > Math.max(0, this.lastX)) {
+      this.showHeader = true;
+
+      this.renderer.setStyle(this.header, 'margin-top', `-${this.header.clientHeight}px`);
+      this.renderer.setStyle(this.header, 'transition', 'margin-top 400ms');
+
+    } else {
+      
+      this.renderer.setStyle(this.header, 'margin-top', '0');
+      this.renderer.setStyle(this.header, 'transition', 'margin-top 400ms');
+
+    }
+
+    this.lastX = event.detail.scrollTop;
+  }
+
+  scrollStart(header) {
+    this.header = header.el;
   }
 
 }
