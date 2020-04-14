@@ -1,6 +1,6 @@
 <app-loader *ngIf="!datafatched"></app-loader>
 <div class="story" *ngIf="datafatched">
-  <h4>Story</h4>
+  <h4 class="title">Story</h4>
   <ion-grid>
     <ion-row *ngFor="let post of posts">
       <ion-col size="12" (click)="navigateToPostDetail(post.category, post.postName)">

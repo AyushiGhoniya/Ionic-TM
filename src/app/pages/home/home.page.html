@@ -1,15 +1,32 @@
-<ion-content>
-  <app-side-menu></app-side-menu>
-  <div class="home">
-    <div class="top-bar">
-      <div class="menu-icon">
+<ion-header #header>
+  <ion-toolbar>
+    <!-- <div class="top-bar"> -->
+      <!-- <div class="menu-icon">
         <img class="menu-image" (click)="openMenu()" src="/assets/top-bar/menu.png">
-      </div>
+      </div> -->
+      <ion-buttons>
+        <ion-menu-button slot="start" (click)="openMenu()"></ion-menu-button>
+        <ion-title>
+          Thanks Mummy
+        </ion-title>
+        <ion-button slot="end">
+          <img class="user-image" src="/assets/top-bar/women.svg">
+        </ion-button>
+      </ion-buttons>
       <div class="user-icon">
-        <img class="user-image" src="/assets/top-bar/women.svg">
       </div>
-    </div>
-    <app-category></app-category>
+    <!-- </div> -->
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-toolbar>
+  <app-category></app-category>
+</ion-toolbar>
+
+<app-side-menu></app-side-menu>
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)" (ionScrollStart)="scrollStart(header)">
+  <div class="home">
     <app-story-list></app-story-list>
   </div>
 </ion-content>

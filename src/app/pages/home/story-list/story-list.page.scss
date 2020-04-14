@@ -1,9 +1,13 @@
 .story {
     margin-top: 30px;
+    .title {
+        color: #517a9f;
+    }
     ion-grid {
         height: 100%;
         width: 100%;
         padding: 0px;
+        margin-top: 15px;
         ion-row {
             margin-bottom: 20px;
             width: 100%;
@@ -27,18 +31,13 @@
                     border-radius: 5px 5px 0px 0px;
                 }
                 h4 {
-                    // margin: 2vh 3vh 0% 3vh;
                     margin: 15px 20px 0px 20px;
                 }
                 p {
                     font-size: 16px;
                     line-height: 22px;
-                    color: rgb(58, 57, 49);
+                    color: #3a3931;
                     margin: 2px 20px 15px 20px;
-                    // text-align: justify;
-                    b {
-                        color: #fa87aa;
-                    }
                 }
             }
         }

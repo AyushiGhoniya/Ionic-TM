@@ -18,6 +18,7 @@ export class PostDetailPage implements OnInit {
   path: string;
   datafatched: boolean = false;
   showHeader: boolean = false;
+  lastX:any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -34,8 +35,6 @@ export class PostDetailPage implements OnInit {
       this.datafatched = true
     })
   }
-
-  lastX:any;
 
   logScrolling(event) {
     if(event.detail.scrollTop > Math.max(0, this.lastX)) {

@@ -1,25 +1,27 @@
+ion-header {
+  ion-toolbar {
+    --background: translucent;
+    background-color: #517a9f;
+    color: white;
+    align-items: center;
+    ion-button {
+      .user-image {
+        height: 35px;
+        width: 35px;
+      }
+    }
+  }
+}
+
+ion-toolbar {
+  --background: translucent;
+  background-color: #517a9f;
+}
+
 ion-content {
   .home {
     padding: 0vh 3vh 0vh 3vh;
-    .top-bar {
-      height: 12vh;
-      width: 100%;
-      .menu-icon {
-        .menu-image {
-          margin: 4vh 0vh 0vh 0vh;
-          height: 4vh;
-        }
-      }
-      .user-icon {
-        .user-image {
-          position: absolute;
-          top: 2vh;
-          right: 2vh;
-          height: 8vh;
-          width: 8vh;
-        }
-      }
-    }
+    
 
     .title {
       height: 5vh;
