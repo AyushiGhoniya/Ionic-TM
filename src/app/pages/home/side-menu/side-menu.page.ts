@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-side-menu',
@@ -9,47 +11,18 @@ import { Router } from '@angular/router';
 })
 export class SideMenuPage implements OnInit {
 
-  userName: string;
-
-  menuItems = [
-    {
-      icon: 'home-outline', label: 'Home', click: this.navigateToHome
-    },
-    {
-      icon: 'person-outline', label: 'Your Profile', click: this.navigateToProfile
-    },
-    {
-      icon: 'chatbubbles-outline', label: 'Your Story', click: this.navigateToYourStory
-    },
-    {
-      icon: 'information-circle-outline', label: 'About', click: this.navigateToAbout
-    },
-    {
-      icon: 'share-social-outline', label: 'Tell your friend', click: this.navigateToShare
-    },
-    {
-      icon: 'bulb-outline', label: 'Feedback', click: this.navigateToFeedback
-    },
-    {
-      icon: 'star-outline', label: 'Rate us here', click: this.navigateToRateUsHere
-    },
-    {
-      icon: 'help-circle-outline', label: 'Help', click: this.navigateToHelp
-    },
-    {
-      icon: 'power-outline', label: 'Logout', click: this.logout
-    },
-  ];
+  user: firebase.User;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private storage: Storage
   ) { }
 
   ngOnInit() {
-    this.angularFireAuth.authState.subscribe(user => {
-      // console.log(user)
-      this.userName = user.displayName
+    this.angularFireAuth.authState.subscribe(value => {
+      this.user = value;
+      console.log(this.user);
     })
   }
 
@@ -69,7 +42,7 @@ export class SideMenuPage implements OnInit {
 
   }
 
-  navigateToShare() {
+  shareApp() {
 
   }
 
@@ -86,7 +59,10 @@ export class SideMenuPage implements OnInit {
   }
 
   logout() {
-
+    firebase.auth().signOut().then(() => {
+      console.log('logout');
+      this.storage.remove('uId');
+    });
   }
 
   navigateToLink(path: string) {

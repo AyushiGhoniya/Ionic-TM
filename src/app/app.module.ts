@@ -11,12 +11,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { FirebaseModule } from './core/firebase/firebase.module';
 import { GooglePlus } from "@ionic-native/google-plus/ngx";
 
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(), 
     AppRoutingModule,
     FirebaseModule

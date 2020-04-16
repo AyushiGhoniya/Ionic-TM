@@ -37,16 +37,22 @@ export class PostDetailPage implements OnInit {
   }
 
   logScrolling(event) {
-    if(event.detail.scrollTop > Math.max(0, this.lastX)) {
-      this.showHeader = true;
+    console.log(event.detail.scrollTop)
 
-      this.renderer.setStyle(this.header, 'margin-top', `-${this.header.clientHeight}px`);
-      this.renderer.setStyle(this.header, 'transition', 'margin-top 400ms');
+    if(event.detail.scrollTop > 200) {
 
-    } else {
+      this.renderer.setStyle(this.header, 'background-color', '#517a9f');
+      // this.renderer.setStyle(this.header, 'margin-top', '0');
+      this.renderer.setStyle(this.header, 'position', 'fixed');
+
+      // this.renderer.setStyle(this.header, 'transition', 'margin-top 400ms');
+
+    } else if(event.detail.scrollTop < 200) {
+      // console.log('less then 200')
+      this.renderer.setStyle(this.header, 'background-color', 'red');
       
-      this.renderer.setStyle(this.header, 'margin-top', '0');
-      this.renderer.setStyle(this.header, 'transition', 'margin-top 400ms');
+      // this.renderer.setStyle(this.header, 'margin-top', '0');
+      // this.renderer.setStyle(this.header, 'transition', 'margin-top 400ms');
 
     }
 

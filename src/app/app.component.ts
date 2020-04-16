@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 
+import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -14,6 +16,7 @@ export class AppComponent {
   constructor(
     public router: Router,
     private platform: Platform,
+    private storage: Storage,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
@@ -24,6 +27,15 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.storage.get('firstTime').then(value => {
+        if (value) {
+          this.router.navigateByUrl('/home')
+        } else {
+          this.storage.set('firstTime', true);
+          this.router.navigateByUrl('/')
+        }
+      })
     });
   }
 

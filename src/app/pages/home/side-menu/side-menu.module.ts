@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { SideMenuPage } from './side-menu.page';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { SideMenuPage } from './side-menu.page';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule
+    IonicModule,
+    IonicStorageModule
   ],
   exports: [
     SideMenuPage

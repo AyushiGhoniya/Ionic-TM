@@ -1,20 +1,16 @@
 <app-loader *ngIf="!datafatched"></app-loader>
 
-<!-- <ion-toolbar #header>
-  <ion-back-button defaultHref="/home" slot="start"></ion-back-button>
-  <ion-title>TM</ion-title>
-</ion-toolbar> -->
-
-
-<ion-content *ngIf="datafatched" [scrollEvents]="true" (ionScroll)="logScrolling($event)" (ionScrollStart)="scrollStart(header)">
+<ion-content *ngIf="datafatched"> <!-- [scrollEvents]="true" (ionScroll)="logScrolling($event)" (ionScrollStart)="scrollStart(header)" -->
   
   <div class="postImg">
     <img src="{{ postDetail.postImage }}">
-    <ion-back-button defaultHref="/home" class="back"></ion-back-button>
-    <div class="icons">
-      <ion-icon name="heart-outline" class="like"></ion-icon>
-      <ion-icon name="share-social" class="share"></ion-icon>
-    </div>
+    <ion-toolbar> <!-- #header -->
+      <ion-back-button defaultHref="/home" class="back"></ion-back-button>
+      <div class="icons">
+        <ion-icon name="heart-outline" class="like"></ion-icon>
+        <ion-icon name="share-social" class="share"></ion-icon>
+      </div>
+    </ion-toolbar>
   </div>
 
   <div class="detail">

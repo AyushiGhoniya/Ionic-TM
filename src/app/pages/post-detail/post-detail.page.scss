@@ -1,38 +1,42 @@
 ion-content {
   
   .postImg {
-    opacity: 0;
-    animation: ImageFadeIn .4s .8s forwards;
+    // opacity: 0;
+    // animation: ImageFadeIn .4s .8s forwards;
     img {
       height: 250px;
       width: 100%;
-      // box-shadow: 1.5px 2.5px 15px 0px rgba(0, 0, 0, 0.1);
     }
-    .back {
-      position: absolute;
-      float: left;
+    ion-toolbar {
+      position: fixed;
       top: 0px;
-      margin: 0px 0px 0px 10px;
-      color: white;
-      font-size: x-large;
-    }
-    .icons {
-      position: absolute;
-        float: right;
-        top: 10px;
-        right: 10px;
-      ion-icon {
+      left: 0px;
+      --background: translucent;
+      background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(96, 96, 96, 0.25));
+      .back {
+        float: left;
         margin: 0px 0px 0px 10px;
         color: white;
         font-size: x-large;
+      }
+      .icons {
+          float: right;
+          top: 10px;
+          right: 10px;
+          margin: 10px 10px 0px 0px;
+        ion-icon {
+          margin-left: 10px;
+          color: white;
+          font-size: x-large;
+        }
       }
     }
   }
 
   .detail {
-    opacity: 0;
+    // opacity: 0;
     margin: 0px 20px 0px 20px;
-    animation: ContentFadeIn .4s 1s forwards;
+    // animation: ContentFadeIn .4s 1s forwards;
     h4 {
       margin: 15px 0px 15px 0px;
       color: rgb(58, 57, 49);
