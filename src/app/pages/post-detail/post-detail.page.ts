@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/service/post.service';
-import { IPost } from 'src/app/models/post.model';
+import { IPost } from 'src/app/models/post.interface';
+import { ShareService } from 'src/app/service/share.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -10,7 +11,7 @@ import { IPost } from 'src/app/models/post.model';
 })
 export class PostDetailPage implements OnInit {
 
-  @Input('header') header:any;
+  @Input('header') header: any;
 
   postName: string;
   categoryName: string;
@@ -18,12 +19,13 @@ export class PostDetailPage implements OnInit {
   path: string;
   datafatched: boolean = false;
   showHeader: boolean = false;
-  lastX:any;
+  lastX: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private postService: PostService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private shareService: ShareService
   ) { }
 
   ngOnInit() {
@@ -39,7 +41,7 @@ export class PostDetailPage implements OnInit {
   logScrolling(event) {
     console.log(event.detail.scrollTop)
 
-    if(event.detail.scrollTop > 200) {
+    if (event.detail.scrollTop > 200) {
 
       this.renderer.setStyle(this.header, 'background-color', '#517a9f');
       // this.renderer.setStyle(this.header, 'margin-top', '0');
@@ -47,10 +49,10 @@ export class PostDetailPage implements OnInit {
 
       // this.renderer.setStyle(this.header, 'transition', 'margin-top 400ms');
 
-    } else if(event.detail.scrollTop < 200) {
+    } else if (event.detail.scrollTop < 200) {
       // console.log('less then 200')
       this.renderer.setStyle(this.header, 'background-color', 'red');
-      
+
       // this.renderer.setStyle(this.header, 'margin-top', '0');
       // this.renderer.setStyle(this.header, 'transition', 'margin-top 400ms');
 
@@ -61,6 +63,18 @@ export class PostDetailPage implements OnInit {
 
   scrollStart(header) {
     this.header = header.el;
+  }
+
+  sharePost() {
+    console.log('share detail')
+    this.shareService.options = {
+      message: this.postDetail.postName + "\n" + this.postDetail.content.substring(0, 99) + '...',
+      subject: '',
+      files: '',
+      url: 'https://play.google.com/store',
+      chooserTitle: ''
+    }
+    this.shareService.shareApp()
   }
 
 }

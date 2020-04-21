@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { ICategory } from '../models/category.model';
+import { ICategory } from '../models/category.interface';
 
 @Injectable({
   providedIn: 'root'

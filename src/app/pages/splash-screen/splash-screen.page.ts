@@ -21,12 +21,10 @@ export class SplashScreenPage implements OnInit {
 
   skip() {
     this.router.navigateByUrl('/home')
-    this.storage.set('login', false)
   }
 
   loginWithFacebook() {
     this.authService.facebookLogin()
-    this.storage.set('login', true)
   }
 
   loginWithGoogle() {

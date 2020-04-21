@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Storage } from '@ionic/storage';
 import * as firebase from 'firebase';
+import { UserService } from 'src/app/service/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class AuthenticationService {
   constructor(
     private googlePlus: GooglePlus,
     private angularFireAuth: AngularFireAuth,
+    private userService: UserService,
     private router: Router,
     private storage: Storage
   ) { }

@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import * as firebase from 'firebase';
+import { ShareService } from 'src/app/service/share.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -16,7 +17,8 @@ export class SideMenuPage implements OnInit {
   constructor(
     private angularFireAuth: AngularFireAuth,
     private router: Router,
-    private storage: Storage
+    private storage: Storage,
+    private shareService: ShareService
   ) { }
 
   ngOnInit() {
@@ -31,11 +33,11 @@ export class SideMenuPage implements OnInit {
   }
 
   navigateToProfile() {
-
+    this.router.navigateByUrl('/profile');
   }
 
   navigateToYourStory() {
-
+    this.router.navigateByUrl('/addpost');
   }
 
   navigateToAbout() {
@@ -43,7 +45,15 @@ export class SideMenuPage implements OnInit {
   }
 
   shareApp() {
-
+    console.log('share')
+    this.shareService.options = {
+      message: 'Share Thanks Mummy',
+      subject: '',
+      files: '',
+      url: 'https://play.google.com/store',
+      chooserTitle: ''
+    }
+    this.shareService.shareApp()
   }
 
   navigateToFeedback() {
@@ -63,14 +73,5 @@ export class SideMenuPage implements OnInit {
       console.log('logout');
       this.storage.remove('uId');
     });
-  }
-
-  navigateToLink(path: string) {
-    if (path == 'home') {
-      this.router.navigateByUrl('/home')
-    }
-    else {
-      this.router.navigate(['/post', path])
-    }
   }
 }

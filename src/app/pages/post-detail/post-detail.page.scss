@@ -1,14 +1,12 @@
 ion-content {
   
   .postImg {
-    // opacity: 0;
-    // animation: ImageFadeIn .4s .8s forwards;
     img {
       height: 250px;
       width: 100%;
     }
     ion-toolbar {
-      position: fixed;
+      position: absolute;
       top: 0px;
       left: 0px;
       --background: translucent;
@@ -34,12 +32,9 @@ ion-content {
   }
 
   .detail {
-    // opacity: 0;
-    margin: 0px 20px 0px 20px;
-    // animation: ContentFadeIn .4s 1s forwards;
+    margin: 0px 20px;
     h4 {
-      margin: 15px 0px 15px 0px;
-      color: rgb(58, 57, 49);
+      margin: 15px 0px;
     }
     .postDetail {
       div {
@@ -78,16 +73,5 @@ ion-content {
         text-align: justify;
       }
     }
-  }
-
-  @keyframes ContentFadeIn {
-    0% { transform: translateY(-1rem); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-  }
-
-  @keyframes ImageFadeIn {
-    0% { transform: translate(-.5rem, -.5rem) scale(1.05); opacity: 0; filter: blur(2px); }
-    50% { opacity: 1; filter: blur(2px); }
-    100% { transform: translateY(0) scale(1.0); opacity: 1; filter: blur(0); }
   }
 }

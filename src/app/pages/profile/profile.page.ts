@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-profile',
@@ -9,19 +11,23 @@ import { Router } from '@angular/router';
 })
 export class ProfilePage implements OnInit {
 
-  userName: string;
+  user: firebase.User;
   enableNotifications = true;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private storage: Storage
   ) { }
 
   ngOnInit() {
-    this.angularFireAuth.authState.subscribe(user => {
-      console.log(user)
-      this.userName = user.displayName
+    this.angularFireAuth.authState.subscribe(value => {
+      this.user = value;
     })
+  }
+
+  editProfile() {
+    console.log('edit profile')
   }
 
   toggleNotifications() {
@@ -35,10 +41,11 @@ export class ProfilePage implements OnInit {
   }
 
   logOut() {
-    if(window.confirm('Are you sure?')) {
-      localStorage.removeItem('uId');
-      this.router.navigateByUrl('/splashscreen');
-    }
+    firebase.auth().signOut().then(() => {
+      if(window.confirm('Are you sure?')) {
+        this.storage.remove('uId');
+      }
+    });
   }
 
 }

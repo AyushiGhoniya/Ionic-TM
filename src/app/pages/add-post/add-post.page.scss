@@ -1,10 +1,11 @@
-ion-header {
-    ion-toolbar {
-      ion-title {
-        margin-left: -25px;
-      }
-    }
-}
+// ion-header {
+//     ion-toolbar {
+//       --background: translucent;
+//       background-color: #517a9f;
+//       color: white;
+//       align-items: center;
+//     }
+// }
 
 ion-content {
     form {
@@ -23,6 +24,9 @@ ion-content {
                     box-sizing: border-box;
                     outline: 0;
                 }
+                input:focus {
+                    border: 1px solid #517a9f;
+                }
                 textarea {
                     width: 100%;
                     margin-top: -12px;
@@ -34,10 +38,13 @@ ion-content {
                     outline: 0;
                     resize: none;
                 }
+                textarea:focus {
+                    border: 1px solid #517a9f;
+                }
             }
         }
-        button {
-            background-color: green;
+        ion-button {
+            // background-color: green;
             float: right;
             border-radius: 3px;
             margin: 15px 15px 0px 0px;

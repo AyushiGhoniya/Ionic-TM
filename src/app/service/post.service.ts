@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { IPost } from '../models/post.model';
+import { IPost } from '../models/post.interface';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({

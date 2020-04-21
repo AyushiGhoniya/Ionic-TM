@@ -1,17 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Your Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
-  <ion-list style="margin-top: 10px;">
-    <ion-list-header>
+  <ion-list>
+    <ion-list-header *ngIf="!user">
       <ion-avatar item-start>
-        <img src="/assets/user.png">
+        <!-- <img src="/assets/user.png"> -->
+        <ion-icon name="person-circle" class="user"></ion-icon>
       </ion-avatar>
-      <p class="username">{{ userName | titlecase }}</p>
+      <p class="username">Welcome, to ThanksMummy</p>
+    </ion-list-header>
+    <ion-list-header *ngIf="user">
+      <ion-avatar item-start>
+        <!-- <img src="/assets/user.png"> -->
+        <img src="{{ user.photoURL }}">
+      </ion-avatar>
+      <p class="username">{{ user.displayName | titlecase }}</p>
+      <!-- <ion-icon name="pencil" class="edit"></ion-icon> -->
+      <img class="edit" src="/assets/icon/edit.svg" (click)="editProfile()">
     </ion-list-header>
   </ion-list>
 

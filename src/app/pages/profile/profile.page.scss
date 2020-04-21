@@ -1,12 +1,27 @@
 ion-content {
   ion-list {
+    margin-top: 10px;
     ion-list-header {
       font-size: 15px;
       color: #7f7f7f;
+      ion-avatar {
+        .user {
+          font-size: 70px;
+          color: #517a9f;
+        }
+      }
       .username {
         font-size: 1.5em;
         padding-left: 15px;
         padding-top: 20px;
+      }
+      .edit {
+        // font-size: 20px;
+        height: 20px;
+        width: 20px;
+        margin-left: 10px;
+        // float: right;
+        // color: #7f7f7f;
       }
     }
     ion-label {

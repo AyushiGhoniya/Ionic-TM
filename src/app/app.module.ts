@@ -12,6 +12,7 @@ import { FirebaseModule } from './core/firebase/firebase.module';
 import { GooglePlus } from "@ionic-native/google-plus/ngx";
 
 import { IonicStorageModule } from '@ionic/storage';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
+    SocialSharing,
     GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
