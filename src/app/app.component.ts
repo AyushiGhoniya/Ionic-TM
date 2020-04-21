@@ -25,8 +25,10 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.statusBar.styleDefault();
+      this.statusBar.overlaysWebView(true);
+      this.statusBar.backgroundColorByHexString('#517a9f');
 
       this.storage.get('firstTime').then(value => {
         if (value) {
@@ -39,5 +41,5 @@ export class AppComponent {
     });
   }
 
-  
+
 }
