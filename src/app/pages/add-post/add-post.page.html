@@ -9,7 +9,7 @@
 
 <ion-content fullscreen>
   <form onsubmit="processForm(event)">
-    
+
     <ion-list lines="none" class="ion-no-margin ion-no-padding">
 
       <ion-item lines="none">
@@ -29,12 +29,15 @@
 
       <ion-item lines="none">
         <ion-label position="stacked">Image</ion-label><br>
-        <div required class="image" (click)="imagePickerSheet()">Tap here to choose image</div>
+        <div required class="image" (click)="imagePickerSheet()">
+          <p *ngIf="selectedImage === ''">Tap me to select image</p>
+          <img *ngIf="selectedImage !== ''" src="{{ selectedImage }}">
+        </div>
       </ion-item>
 
     </ion-list>
 
     <ion-button color="success">Submit</ion-button>
   </form>
-  
+
 </ion-content>

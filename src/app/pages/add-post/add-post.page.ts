@@ -9,7 +9,7 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class AddPostPage implements OnInit {
 
-  selectedImage: string;
+  selectedImage: string = '';
 
   constructor(
     private camera: Camera,
