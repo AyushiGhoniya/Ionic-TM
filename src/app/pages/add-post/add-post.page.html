@@ -30,7 +30,7 @@
       <ion-item lines="none">
         <ion-label position="stacked">Image</ion-label><br>
         <div required class="image" (click)="imagePickerSheet()">
-          <p *ngIf="selectedImage === ''">Tap me to select image</p>
+          <p *ngIf="selectedImage === ''">Tap here to select image</p>
           <img *ngIf="selectedImage !== ''" src="{{ selectedImage }}">
         </div>
       </ion-item>
