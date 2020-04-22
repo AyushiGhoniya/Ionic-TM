@@ -41,13 +41,27 @@ ion-content {
                 textarea:focus {
                     border: 1px solid #517a9f;
                 }
+                .image {
+                    background-color: #dddddd;
+                    height: 300px;
+                    width: 100%;
+                    color: #7f7f7f;
+                    border-radius: 4px;
+                    text-align: center;
+                    line-height: 300px;
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+                .image:focus {
+                    outline: none;
+                }
             }
         }
         ion-button {
             // background-color: green;
             float: right;
-            border-radius: 3px;
-            margin: 15px 15px 0px 0px;
+            border-radius: 4px;
+            margin: 15px 15px 20px 0px;
             padding: 0px 12px;
             color: white;
             height: 40px;

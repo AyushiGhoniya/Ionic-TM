@@ -9,6 +9,7 @@
 
 <ion-content fullscreen>
   <form onsubmit="processForm(event)">
+    
     <ion-list lines="none" class="ion-no-margin ion-no-padding">
 
       <ion-item lines="none">
@@ -24,6 +25,11 @@
       <ion-item lines="none">
         <ion-label position="stacked">Description</ion-label><br>
         <textarea required type="text" placeholder="Type a description" rows="4"></textarea>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Image</ion-label><br>
+        <div required class="image" (click)="imagePickerSheet()">Tap here to choose image</div>
       </ion-item>
 
     </ion-list>

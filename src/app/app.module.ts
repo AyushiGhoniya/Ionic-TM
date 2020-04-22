@@ -13,6 +13,7 @@ import { GooglePlus } from "@ionic-native/google-plus/ngx";
 
 import { IonicStorageModule } from '@ionic/storage';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     StatusBar,
     SplashScreen,
     SocialSharing,
+    Camera,
     GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
