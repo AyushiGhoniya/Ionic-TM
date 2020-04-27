@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/splash-screen/splash-screen.module').then( m => m.SplashScreenPageModule)
   },
   {
+    path: 'introduction',
+    loadChildren: () => import('./pages/introduction-screen/introduction-screen.module').then( m => m.IntroductionScreenPageModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
@@ -26,7 +30,16 @@ const routes: Routes = [
   {
     path: 'addpost',
     loadChildren: () => import('./pages/add-post/add-post.module').then( m => m.AddPostPageModule)
-  }
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+  },
+  {
+    path: 'privacy-policy',
+    loadChildren: () => import('./pages/privacy-policy/privacy-policy.module').then( m => m.PrivacyPolicyPageModule)
+  },
+  
 ];
 
 @NgModule({

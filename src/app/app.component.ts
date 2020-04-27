@@ -29,15 +29,6 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.statusBar.overlaysWebView(true);
       this.statusBar.backgroundColorByHexString('#517a9f');
-
-      this.storage.get('firstTime').then(value => {
-        if (value) {
-          this.router.navigateByUrl('/home')
-        } else {
-          this.storage.set('firstTime', true);
-          this.router.navigateByUrl('/')
-        }
-      })
     });
   }
 

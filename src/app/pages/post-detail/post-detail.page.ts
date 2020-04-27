@@ -66,7 +66,6 @@ export class PostDetailPage implements OnInit {
   }
 
   sharePost() {
-    console.log('share detail')
     this.shareService.options = {
       message: this.postDetail.postName + "\n" + this.postDetail.content.substring(0, 99) + '...',
       subject: '',

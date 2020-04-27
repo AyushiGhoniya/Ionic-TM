@@ -24,12 +24,7 @@ export class SideMenuPage implements OnInit {
   ngOnInit() {
     this.angularFireAuth.authState.subscribe(value => {
       this.user = value;
-      console.log(this.user);
     })
-  }
-
-  navigateToHome() {
-
   }
 
   navigateToProfile() {
@@ -40,14 +35,9 @@ export class SideMenuPage implements OnInit {
     this.router.navigateByUrl('/addpost');
   }
 
-  navigateToAbout() {
-
-  }
-
   shareApp() {
-    console.log('share')
     this.shareService.options = {
-      message: 'Share Thanks Mummy',
+      message: 'Share ThanksMummy',
       subject: '',
       files: '',
       url: 'https://play.google.com/store',
@@ -55,22 +45,25 @@ export class SideMenuPage implements OnInit {
     }
     this.shareService.shareApp()
   }
+  
+  navigateToRateUsHere() {
 
+  }
+  
   navigateToFeedback() {
 
   }
 
-  navigateToRateUsHere() {
-
+  navigateToPrivacyPolicy() {
+    this.router.navigateByUrl('/privacy-policy')
   }
 
-  navigateToHelp() {
-
+  navigateToAboutUs() {
+    this.router.navigateByUrl('/about');
   }
 
   logout() {
     firebase.auth().signOut().then(() => {
-      console.log('logout');
       this.storage.remove('uId');
     });
   }

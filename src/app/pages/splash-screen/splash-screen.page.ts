@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/service/authentication.service';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -11,23 +10,26 @@ import { Storage } from '@ionic/storage';
 export class SplashScreenPage implements OnInit {
 
   constructor(
-    private authService: AuthenticationService,
     private router: Router,
     private storage: Storage
   ) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.checkFirstTime()
+    }, 4000);
   }
 
-  skip() {
-    this.router.navigateByUrl('/home')
-  }
-
-  loginWithFacebook() {
-    this.authService.facebookLogin()
-  }
-
-  loginWithGoogle() {
-    this.authService.googleLogin()
+  checkFirstTime() {
+    this.storage.get('firstTime').then(val => {
+      if (val === null) {
+        this.storage.set('firstTime', 'no')
+        this.router.navigateByUrl('/introduction')
+      } else {
+        this.storage.set('firstTime', 'no')
+        this.router.navigateByUrl('/home')
+      }
+      
+    })
   }
 }
