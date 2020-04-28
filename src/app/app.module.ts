@@ -1,39 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { IonicModule } from '@ionic/angular';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FirebaseModule } from './core/firebase/firebase.module';
-import { GooglePlus } from "@ionic-native/google-plus/ngx";
 
-import { IonicStorageModule } from '@ionic/storage';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import { Camera } from '@ionic-native/camera/ngx';
+import { CoreModule } from './core/core.module';
+import { NoInternetPageModule } from './pages/no-internet/no-internet.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
+    CoreModule,
     BrowserModule,
-    IonicStorageModule.forRoot(),
-    IonicModule.forRoot(), 
     AppRoutingModule,
-    FirebaseModule
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    SocialSharing,
-    Camera,
-    GooglePlus,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    NoInternetPageModule,
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

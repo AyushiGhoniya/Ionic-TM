@@ -1,0 +1,21 @@
+ion-content {
+    .nointernet {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        width: 100vw;
+        img {
+            height: 40vh;
+            width: 80vw;
+        }
+        p {
+            margin: 0px;
+            padding: 0px;
+            font-size: 18px;
+            font-weight: 500;
+            color: rgb(94, 93, 93);
+        }
+    }
+}

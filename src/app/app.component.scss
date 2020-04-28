@@ -1,0 +1,12 @@
+ion-app {
+    .no-internet {
+        position: absolute;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        display: none;
+    }
+}
+.show {
+    display: block !important;
+}

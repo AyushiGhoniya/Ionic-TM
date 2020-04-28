@@ -1,24 +1,28 @@
-import { Component } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Router } from '@angular/router';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { Platform, NavController } from '@ionic/angular';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
-import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
+import { Network } from '@ionic-native/network/ngx';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  @ViewChild('noInternet', { static: false }) noInternet: ElementRef
+
   constructor(
-    public router: Router,
+    private router: Router,
+    private network: Network,
     private platform: Platform,
-    private storage: Storage,
+    private renderer: Renderer2,
+    private statusBar: StatusBar,
+    private navCtrl: NavController,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
   ) {
     this.initializeApp();
   }
@@ -28,9 +32,33 @@ export class AppComponent {
       this.splashScreen.hide();
       this.statusBar.styleDefault();
       this.statusBar.overlaysWebView(true);
+      this.backButtonEvent()
       this.statusBar.backgroundColorByHexString('#517a9f');
     });
   }
 
+  backButtonEvent() {
+    this.platform.backButton.subscribeWithPriority(666666, () => {
+      if (this.router.url === '/home') {
+        if (window.confirm('Are you sure you want to exit?')) {
+          navigator['app'].exitApp();
+        }
+      } else {
+        this.navCtrl.pop();
+      }
+    })
+  }
 
+  ngOnInit() {
+    this.checkInternetConnectivity()
+  }
+
+  checkInternetConnectivity() {
+    this.network.onDisconnect().subscribe(() => {
+      this.renderer.addClass(this.noInternet.nativeElement, 'show')
+    })
+    this.network.onConnect().subscribe(() => {
+      this.renderer.removeClass(this.noInternet.nativeElement, 'show')
+    })
+  }
 }
