@@ -11,6 +11,7 @@ export class ShareService {
     private socialSharing: SocialSharing,
   ) { }
 
+  // options for sharing content
   options: IShare = {
     message: '',
     subject: '',
@@ -19,7 +20,8 @@ export class ShareService {
     chooserTitle: '',
   };
 
-  shareApp() {
+  // share content using social sharing
+  share() {
     this.socialSharing.shareWithOptions(this.options)
       .then(() => {
 

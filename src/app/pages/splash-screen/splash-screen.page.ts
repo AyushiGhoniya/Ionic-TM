@@ -16,16 +16,16 @@ export class SplashScreenPage implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.checkFirstTime()
+      this.checkFirstTime()  // after 4s check whether app is opened first time or not
     }, 4000);
   }
 
   checkFirstTime() {
     this.storage.get('firstTime').then(val => {
-      if (val === null) {
+      if (val === null) {  // app is open for first time
         this.storage.set('firstTime', 'no')
         this.router.navigateByUrl('/introduction')
-      } else {
+      } else {  // app is not open for first time
         this.storage.set('firstTime', 'no')
         this.router.navigateByUrl('/home')
       }

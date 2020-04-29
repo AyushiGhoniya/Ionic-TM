@@ -1,8 +1,4 @@
 import { Component, OnInit, Renderer2, Input } from '@angular/core';
-import { menuController } from '@ionic/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { Platform, NavController } from '@ionic/angular';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,40 +14,21 @@ export class HomePage implements OnInit {
   lastX: any;
 
   constructor(
-    private angularFireAuth: AngularFireAuth,
-    private renderer: Renderer2,
-    private platform: Platform,
-    private router: Router,
-    private navCtrl: NavController
+    private renderer: Renderer2
   ) { }
 
   ngOnInit() {
-    this.platform.backButton.subscribeWithPriority(666666, () => {
-      if (this.router.url === '/home') {
-        if (window.confirm('Are you sure you want to exit?')) {
-          navigator['app'].exitApp();
-        }
-      } else {
-        this.navCtrl.pop()
-      }
-    })
+
   }
 
-  openMenu() {
-    menuController.open();
-  }
-
+  // header scrolling event
   logScrolling(event) {
-    if (event.detail.scrollTop > Math.max(0, this.lastX)) {
-
+    if (event.detail.scrollTop > Math.max(0, this.lastX)) {  //hide header
       this.renderer.setStyle(this.header, 'margin-top', `-${this.header.clientHeight}px`);
       this.renderer.setStyle(this.header, 'transition', 'margin-top 400ms');
-
-    } else {
-
+    } else {  // show header
       this.renderer.setStyle(this.header, 'margin-top', '0');
       this.renderer.setStyle(this.header, 'transition', 'margin-top 400ms');
-
     }
 
     this.lastX = event.detail.scrollTop;

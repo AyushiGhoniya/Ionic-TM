@@ -1,7 +1,7 @@
+import * as firebase from 'firebase/app';
 import { Injectable } from '@angular/core';
+import { UserService } from './user.service';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
-import * as firebase from 'firebase';
-import { UserService } from 'src/app/service/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +10,13 @@ export class AuthenticationService {
 
   constructor(
     private googlePlus: GooglePlus,
-    private userService: UserService
+    private userService: UserService,
   ) { }
 
-  googleLogin() {
-
+  // login with google using firebase
+  async nativeGoogleLogin() {
     this.googlePlus.login({
-      'webClientId': '1077237492199-bmga3td66gkh91vdflkanid7n4o46a5v.apps.googleusercontent.com',
+      'webClientId': '783043660458-cg1620a68ulhrevsc2ae1p8eh275ojg2.apps.googleusercontent.com',
       'offline': true
     })
       .then(res => {
@@ -26,5 +26,13 @@ export class AuthenticationService {
           })
       })
   }
-  
+
+  // logout user from firebase
+  logout() {
+    if (confirm('Are you sure you want to logout?')) {
+      firebase.auth().signOut()
+        .then(() => { })
+        .catch(err => { })
+    }
+  }
 }

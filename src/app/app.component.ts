@@ -37,14 +37,15 @@ export class AppComponent implements OnInit {
     });
   }
 
+  // when native back button is pressed
   backButtonEvent() {
     this.platform.backButton.subscribeWithPriority(666666, () => {
-      if (this.router.url === '/home') {
-        if (window.confirm('Are you sure you want to exit?')) {
-          navigator['app'].exitApp();
+      if (this.router.url === '/home') {  // current path is home
+        if (window.confirm('Are you sure you want to exit?')) {  // user wants to exit app
+          navigator['app'].exitApp();  // exit app
         }
-      } else {
-        this.navCtrl.pop();
+      } else {  // current path is not home
+        this.navCtrl.pop();  // navigate to previous screen
       }
     })
   }
@@ -53,12 +54,13 @@ export class AppComponent implements OnInit {
     this.checkInternetConnectivity()
   }
 
+  // continuous internet connection checking
   checkInternetConnectivity() {
-    this.network.onDisconnect().subscribe(() => {
-      this.renderer.addClass(this.noInternet.nativeElement, 'show')
+    this.network.onDisconnect().subscribe(() => {  // internet connection get disconnected
+      this.renderer.addClass(this.noInternet.nativeElement, 'show')  // show no internet page
     })
-    this.network.onConnect().subscribe(() => {
-      this.renderer.removeClass(this.noInternet.nativeElement, 'show')
+    this.network.onConnect().subscribe(() => {  // internet connection is back
+      this.renderer.removeClass(this.noInternet.nativeElement, 'show')  // hide no internet page
     })
   }
 }

@@ -22,7 +22,7 @@ export class IntroductionScreenPage implements OnInit {
   }
 
   loginWithGoogle() {
-    this.authService.googleLogin()
+    this.authService.nativeGoogleLogin()
   }
 
 }

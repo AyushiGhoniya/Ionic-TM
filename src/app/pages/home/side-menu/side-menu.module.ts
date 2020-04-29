@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { SideMenuPage } from './side-menu.page';
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -13,7 +10,6 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
     IonicStorageModule
   ],

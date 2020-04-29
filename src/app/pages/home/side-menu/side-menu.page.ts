@@ -22,6 +22,11 @@ export class SideMenuPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getCurrentUser();
+  }
+
+  // get current logged in user from firebase auth
+  getCurrentUser() {
     this.angularFireAuth.authState.subscribe(value => {
       this.user = value;
     })
@@ -35,6 +40,7 @@ export class SideMenuPage implements OnInit {
     this.router.navigateByUrl('/addpost');
   }
 
+  // share app on different platforms
   shareApp() {
     this.shareService.options = {
       message: 'Share ThanksMummy',
@@ -43,7 +49,7 @@ export class SideMenuPage implements OnInit {
       url: 'https://play.google.com/store',
       chooserTitle: ''
     }
-    this.shareService.shareApp()
+    this.shareService.share()
   }
   
   navigateToRateUsHere() {

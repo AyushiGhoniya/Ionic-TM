@@ -11,8 +11,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
   imports: [
     CommonModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   exports: [
     AngularFireAuthModule,

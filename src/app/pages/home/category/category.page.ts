@@ -18,6 +18,7 @@ export class CategoryPage implements OnInit {
     this.postService.activeSegment.next(this.activeSegment)
   }
 
+  // when category gets changed
   segmentChanged(event: any) {
     this.activeSegment = event.target.value
     this.postService.activeSegment.next(this.activeSegment)

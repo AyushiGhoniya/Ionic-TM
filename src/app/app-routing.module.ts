@@ -24,6 +24,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
+    path: 'privacy-policy',
+    loadChildren: () => import('./pages/privacy-policy/privacy-policy.module').then( m => m.PrivacyPolicyPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+  },
+  {
     path: 'postdetail/:categoryName/:post/:path',
     loadChildren: () => import('./pages/post-detail/post-detail.module').then( m => m.PostDetailPageModule)
   },
@@ -31,21 +39,11 @@ const routes: Routes = [
     path: 'addpost',
     loadChildren: () => import('./pages/add-post/add-post.module').then( m => m.AddPostPageModule)
   },
-  {
-    path: 'about',
-    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
-  },
-  {
-    path: 'privacy-policy',
-    loadChildren: () => import('./pages/privacy-policy/privacy-policy.module').then( m => m.PrivacyPolicyPageModule)
-  },
-  
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+  ]
 })
 export class AppRoutingModule { }

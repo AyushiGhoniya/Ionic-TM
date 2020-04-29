@@ -18,6 +18,11 @@ export class StoryListPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getPosts();
+  }
+
+  // get a list of posts for selected category
+  getPosts() {
     this.postService.activeSegment.subscribe(activeSegment => {
       this.postService.getPosts(activeSegment).subscribe(data => {
         this.posts = data
@@ -26,6 +31,7 @@ export class StoryListPage implements OnInit {
     })
   }
 
+  // show details for selected post
   navigateToPostDetail(category: string, post: string) {
     this.router.navigate(['/postdetail', category, post, 'home'])
   }

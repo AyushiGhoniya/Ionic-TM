@@ -8,17 +8,17 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { CoreModule } from './core/core.module';
-import { NoInternetPageModule } from './pages/no-internet/no-internet.module';
+import { NoInternetPage } from './pages/no-internet/no-internet.page';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NoInternetPage
   ],
   imports: [
     CoreModule,
     BrowserModule,
     AppRoutingModule,
-    NoInternetPageModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
   ],

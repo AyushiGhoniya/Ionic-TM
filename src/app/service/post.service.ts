@@ -14,10 +14,12 @@ export class PostService {
     private angularFireDatabase: AngularFireDatabase
   ) { }
 
+  // get all posts of selected category from firebase database
   getPosts(category: string): Observable<IPost[]> {
     return this.angularFireDatabase.list<IPost>('/posts/categories/' + category).valueChanges()
   }
 
+  // get post details of selected post from firebase database
   getPostDetail(category ,post): Observable<IPost> {
     return this.angularFireDatabase.object<IPost>('posts/categories/' + category + '/' + post).valueChanges()
   }
