@@ -39,6 +39,14 @@ const routes: Routes = [
     path: 'addpost',
     loadChildren: () => import('./pages/add-post/add-post.module').then( m => m.AddPostPageModule)
   },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+  {
+    path: 'rate-us-here',
+    loadChildren: () => import('./pages/rate-us-here/rate-us-here.module').then( m => m.RateUsHerePageModule)
+  },
 ];
 
 @NgModule({

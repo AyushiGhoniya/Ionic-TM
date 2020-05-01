@@ -1,0 +1,22 @@
+<div class="rate-us-here">
+  <div (click)="hideRateUs()" class="close-modal">
+    &times;
+  </div>
+  <div class="header">
+    <h4>Are you happy using ThanksMummy App?</h4>
+  </div>
+  <div class="options">
+    <ion-grid>
+      <ion-row>
+        <ion-col (click)="navigateToPlayStore()" size="6">
+          <ion-icon name="happy"></ion-icon>
+          <p>Yes Its <br>Awesome</p>
+        </ion-col>
+        <ion-col (click)="navigateToFeedBack()" size="6">
+          <ion-icon name="sad"></ion-icon>
+          <p>Needs <br>Improvement</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>

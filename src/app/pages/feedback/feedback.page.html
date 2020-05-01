@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="feedback">
+    <p>Looking forward to your feedback!</p>
+    <textarea name="message1" #message1="ngModel" [(ngModel)]="messageValue" required type="text"
+      placeholder="Tell us how you feel about this app..." rows="15"></textarea>
+    <button [disabled]="message1.errors?.required" (click)="feedbackForm()" class="btn btn-success">Submit</button>
+  </div>
+</ion-content>

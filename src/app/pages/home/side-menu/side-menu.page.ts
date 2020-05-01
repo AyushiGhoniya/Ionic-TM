@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import * as firebase from 'firebase';
 import { ShareService } from 'src/app/service/share.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -18,7 +19,8 @@ export class SideMenuPage implements OnInit {
     private angularFireAuth: AngularFireAuth,
     private router: Router,
     private storage: Storage,
-    private shareService: ShareService
+    private shareService: ShareService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -51,13 +53,13 @@ export class SideMenuPage implements OnInit {
     }
     this.shareService.share()
   }
-  
+
   navigateToRateUsHere() {
-
+    this.userService.showRateUsHere.next('show');
   }
-  
-  navigateToFeedback() {
 
+  navigateToFeedback() {
+    this.router.navigateByUrl('/feedback');
   }
 
   navigateToPrivacyPolicy() {

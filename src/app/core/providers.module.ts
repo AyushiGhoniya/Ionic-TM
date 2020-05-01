@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     GooglePlus,
     SplashScreen,
     SocialSharing,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ]
 })

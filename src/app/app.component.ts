@@ -5,6 +5,7 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/co
 
 import { Router } from '@angular/router';
 import { Network } from '@ionic-native/network/ngx';
+import { UserService } from './service/user.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { Network } from '@ionic-native/network/ngx';
 export class AppComponent implements OnInit {
 
   @ViewChild('noInternet', { static: false }) noInternet: ElementRef
+  @ViewChild('rateUsHere', { static: false }) rateUsHere: ElementRef
 
   constructor(
     private router: Router,
@@ -23,6 +25,7 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private navCtrl: NavController,
     private splashScreen: SplashScreen,
+    private userService: UserService
   ) {
     this.initializeApp();
   }
@@ -52,6 +55,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.checkInternetConnectivity()
+    this.checkRateUsHereVisibility()
   }
 
   // continuous internet connection checking
@@ -61,6 +65,19 @@ export class AppComponent implements OnInit {
     })
     this.network.onConnect().subscribe(() => {  // internet connection is back
       this.renderer.removeClass(this.noInternet.nativeElement, 'show')  // hide no internet page
+    })
+  }
+
+  // check if rate us here page to show or not
+  checkRateUsHereVisibility() {
+    this.userService.showRateUsHere.subscribe(data => {
+      if (data === 'show') {
+        this.renderer.addClass(this.rateUsHere.nativeElement, 'show') // show rate us here page
+      } else {
+        if (this.rateUsHere != null) {
+          this.renderer.removeClass(this.rateUsHere.nativeElement, 'show') // hide rate us here page
+        }
+      }
     })
   }
 }
