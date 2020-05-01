@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
 import * as firebase from 'firebase';
-import { Storage } from '@ionic/storage';
+import { AuthenticationService } from 'src/app/service/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -15,15 +15,25 @@ export class ProfilePage implements OnInit {
   enableNotifications = true;
 
   constructor(
-    private angularFireAuth: AngularFireAuth,
     private router: Router,
-    private storage: Storage
+    private angularFireAuth: AngularFireAuth,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
     this.angularFireAuth.authState.subscribe(value => {
       this.user = value;
     })
+  }
+
+  // calling google login method from authentication service
+  loginWithGoogle() {
+    this.authenticationService.nativeGoogleLogin('profile')
+  }
+
+  // skip login for now is pressed
+  navigateToHome() {
+    this.router.navigateByUrl('home');
   }
 
   editProfile() {
@@ -41,11 +51,7 @@ export class ProfilePage implements OnInit {
   }
 
   logOut() {
-    firebase.auth().signOut().then(() => {
-      if(window.confirm('Are you sure?')) {
-        this.storage.remove('uId');
-      }
-    });
+    this.authenticationService.logout();
   }
 
 }

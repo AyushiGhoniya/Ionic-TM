@@ -4,28 +4,61 @@ ion-content {
     ion-list-header {
       font-size: 15px;
       color: #7f7f7f;
-      ion-avatar {
-        .user {
-          font-size: 70px;
-          color: #517a9f;
-        }
-      }
       .username {
         font-size: 1.5em;
         padding-left: 15px;
         padding-top: 20px;
       }
       .edit {
-        // font-size: 20px;
         height: 20px;
         width: 20px;
         margin-left: 10px;
-        // float: right;
-        // color: #7f7f7f;
       }
     }
     ion-label {
       padding-left: 5px;
+    }
+  }
+
+  .login {
+    margin-top: 100px;
+    .img {
+      height: 50%;
+      width: 75% !important;
+    }
+    .google,
+    .skip {
+      width: 80%;
+      margin-bottom: 10px;
+      margin-left: 10%;
+      border-radius: 15px;
+      background-color: #517a9f;
+      height: 60px;
+      position: relative;
+      .image-conatiner {
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: white;
+        border-radius: 50%;
+        img {
+          height: 80%;
+          width: 80%;
+          margin: 10%;
+        }
+      }
+      h6 {
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+      }
     }
   }
 }

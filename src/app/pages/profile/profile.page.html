@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header *ngIf="user">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
@@ -7,29 +7,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="user">
 
   <ion-list>
-    <ion-list-header *ngIf="!user">
+    <ion-list-header>
       <ion-avatar item-start>
-        <!-- <img src="/assets/user.png"> -->
-        <ion-icon name="person-circle" class="user"></ion-icon>
-      </ion-avatar>
-      <p class="username">Welcome, to ThanksMummy</p>
-    </ion-list-header>
-    <ion-list-header *ngIf="user">
-      <ion-avatar item-start>
-        <!-- <img src="/assets/user.png"> -->
         <img src="{{ user.photoURL }}">
       </ion-avatar>
       <p class="username">{{ user.displayName | titlecase }}</p>
-      <!-- <ion-icon name="pencil" class="edit"></ion-icon> -->
       <img class="edit" src="/assets/icon/edit.svg" (click)="editProfile()">
     </ion-list-header>
   </ion-list>
 
   <hr style="margin-top: 5px;">
-  
+
   <ion-title>Settings</ion-title>
 
   <ion-list no-border>
@@ -37,9 +28,9 @@
       General
     </ion-list-header>
     <ion-item>
-       <ion-icon name='notifications' item-start></ion-icon>
+      <ion-icon name='notifications' item-start></ion-icon>
       <ion-label class="label"> Enable notifications </ion-label>
-      <!-- <ion-toggle [(ngModel)]="enableNotifications" (click)="toggleNotifications()"></ion-toggle> -->
+      <ion-toggle [(ngModel)]="enableNotifications" (click)="toggleNotifications()"></ion-toggle>
     </ion-item>
     <ion-item lines="none">
       <ion-icon name='help-buoy' item-start></ion-icon>
@@ -53,12 +44,23 @@
     </ion-list-header>
     <ion-item (click)="logOut()" lines="none">
       <ion-icon name='power' item-start></ion-icon>
-      <!-- <button ion-button (click)="logOut()" item-end>
-      Logout
-      </button> -->
       <ion-label>Logout</ion-label>
     </ion-item>
   </ion-list>
 
 </ion-content>
 
+<ion-content *ngIf="!user">
+  <div class="login">
+    <img src="/assets/images/login/login.png">
+    <div class="google" (click)="loginWithGoogle()">
+      <div class="image-conatiner">
+        <img src="/assets/images/login/google.png">
+      </div>
+      <h6>Sign up with Google</h6>
+    </div>
+    <div class="skip" (click)="navigateToHome()">
+      <h6>Skip for now</h6>
+    </div>
+  </div>
+</ion-content>

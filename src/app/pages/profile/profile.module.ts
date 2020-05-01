@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { ProfilePage } from './profile.page';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     IonicModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ]
 })

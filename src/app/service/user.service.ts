@@ -17,10 +17,10 @@ export class UserService {
   ) { }
 
   // add user details to firebase database
-  addUserDetails() {
+  addUserDetails(path: string) {
     this.angularFireDatabase.object('/' + 'users/' + firebase.auth().currentUser.uid + '/userdetails').set({
       email: firebase.auth().currentUser.email,
     })
-    this.router.navigateByUrl('home')
+    this.router.navigateByUrl(path)
   }
 }
